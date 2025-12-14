@@ -1,10 +1,8 @@
-
-
 export interface User {
   id: string;
   name: string;
   email: string;
-  role: 'student' | 'teacher' | 'admin';
+  role: "student" | "teacher" | "admin";
   avatar: string;
   stats: {
     assessmentsCompleted: number;
@@ -48,19 +46,23 @@ export interface Assessment {
   description: string;
   duration: number; // minutes
   totalQuestions: number;
-  difficulty: 'easy' | 'medium' | 'hard';
+  difficulty: "easy" | "medium" | "hard";
   startDate: string;
   classId?: string; // Link assessment to a specific class
   academicLevel?: string;
 }
 
-export type QuestionType = 'multiple_choice' | 'true_false' | 'short_answer' | 'code';
+export type QuestionType =
+  | "multiple_choice"
+  | "true_false"
+  | "short_answer"
+  | "code";
 
 export interface Question {
   id: string;
   assessmentId: string;
   type: QuestionType;
-  difficulty: 'easy' | 'medium' | 'hard';
+  difficulty: "easy" | "medium" | "hard";
   topic: string;
   question: string;
   options: string[];
@@ -105,15 +107,20 @@ export interface Submission {
 }
 
 export interface LearningRecommendation {
-  id:string;
+  id: string;
   skill: string;
-  contentType: 'video' | 'article' | 'practice';
+  contentType: "video" | "article" | "practice";
   title: string;
   duration: number; // minutes
-  difficulty: 'easy' | 'medium' | 'hard';
+  difficulty: "easy" | "medium" | "hard";
   thumbnail: string;
   completed: boolean;
-  priority: 'high' | 'medium' | 'low';
+  priority: "high" | "medium" | "low";
+  description?: string;
+  youtubeSearchQuery?: string;
+  googleSearchQuery?: string;
+  keyTopics?: string[];
+  source?: "mock" | "ai";
 }
 
 export interface StudentSkill {
@@ -156,31 +163,33 @@ export interface GeneratedQuestion {
 }
 
 export interface SkillProgressRecord {
-    date: string; // YYYY-MM-DD
-    skill: string;
-    mastery: number; // 0-100
+  date: string; // YYYY-MM-DD
+  skill: string;
+  mastery: number; // 0-100
 }
 
 export interface LearningPlanTask {
   day: number;
   title: string;
   description: string;
-  type: 'video' | 'read' | 'practice';
+  type: "video" | "read" | "practice";
   topic: string;
 }
 
 export interface ChatMessage {
-  sender: 'user' | 'bot';
+  sender: "user" | "bot";
   text: string;
   timestamp: string;
-  attachment?: {
-    type: 'image';
-    name: string;
-    data: string; // data URL for images
-  } | {
-    type: 'pdf';
-    name: string;
-  };
+  attachment?:
+    | {
+        type: "image";
+        name: string;
+        data: string; // data URL for images
+      }
+    | {
+        type: "pdf";
+        name: string;
+      };
   quiz?: {
     question: string;
     options: string[];
@@ -192,7 +201,7 @@ export interface ChatMessage {
 // Types for Smart Class Insight
 export interface StudentPerformanceRecord {
   studentId: string;
-  studentName: string; 
+  studentName: string;
   classId: string;
   subject: string;
   topic: string;
@@ -213,7 +222,7 @@ export interface ClassInsightReport {
 }
 
 export interface SkillDetailRecommendation {
-  type: 'video' | 'article' | 'practice';
+  type: "video" | "article" | "practice";
   title: string;
   description: string;
 }
@@ -245,29 +254,29 @@ export interface RealLifeApplication {
 }
 
 export interface Notification {
-    id: string;
-    userId: string;
-    text: string;
-    timestamp: string;
-    read: boolean;
+  id: string;
+  userId: string;
+  text: string;
+  timestamp: string;
+  read: boolean;
 }
 
 export interface OnboardingStep {
-    title: string;
-    content: string;
+  title: string;
+  content: string;
 }
 
 export interface TimelineEvent {
-    date: string; // YYYY-MM-DD
-    skill: string;
-    type: 'assessment' | 'milestone';
-    title: string;
-    score?: number; // percentage
+  date: string; // YYYY-MM-DD
+  skill: string;
+  type: "assessment" | "milestone";
+  title: string;
+  score?: number; // percentage
 }
 
 export interface TimelineAiInsight {
-    observation: string;
-    tip: string;
+  observation: string;
+  tip: string;
 }
 
 export interface FutureSkillTrend {

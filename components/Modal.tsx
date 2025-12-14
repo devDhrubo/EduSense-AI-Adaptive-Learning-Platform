@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { XCircleIcon } from './icons';
+import React, { useEffect, useRef } from "react";
+import { XCircleIcon } from "./icons";
 
 interface ModalProps {
   isOpen: boolean;
@@ -14,15 +14,15 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
   // Effect for handling the Escape key
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         onClose();
       }
     };
     if (isOpen) {
-      document.addEventListener('keydown', handleKeyDown);
+      document.addEventListener("keydown", handleKeyDown);
     }
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen, onClose]); // `onClose` is a dependency to ensure we always call the latest version.
 
@@ -53,7 +53,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
         tabIndex={-1} // Make it focusable
       >
         <header className="flex items-center justify-between p-6 border-b border-black/10">
-          <h2 id="modal-title" className="text-2xl font-bold font-display text-neutral-extradark">
+          <h2
+            id="modal-title"
+            className="text-2xl font-bold font-display text-neutral-extradark"
+          >
             {title}
           </h2>
           <button
@@ -64,9 +67,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
             <XCircleIcon className="h-7 w-7" />
           </button>
         </header>
-        <div className="p-6 max-h-[70vh] overflow-y-auto">
-          {children}
-        </div>
+        <div className="p-6 max-h-[70vh] overflow-y-auto">{children}</div>
       </div>
     </div>
   );
